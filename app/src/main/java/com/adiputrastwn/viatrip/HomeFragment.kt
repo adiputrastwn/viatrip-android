@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.adiputrastwn.viatrip.databinding.FragmentHomeBinding
+import com.adiputrastwn.viatrip.recycler.adapter.RecyclerHighlightAdapter
+import com.adiputrastwn.viatrip.recycler.decoration.SpaceItemDecoration
 
 class HomeFragment : Fragment() {
 
@@ -25,10 +28,18 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            buttonFirst.setOnClickListener {
-                HomeFragmentDirections.showDetailTrip().also {
-                    findNavController().navigate(it)
-                }
+            recyclerHighlight.apply {
+                layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                addItemDecoration(
+                    SpaceItemDecoration(
+                        context,
+                        16f,
+                        SpaceItemDecoration.Orientation.HORIZONTAL
+                    )
+                )
+                adapter = RecyclerHighlightAdapter()
+
             }
         }
     }
