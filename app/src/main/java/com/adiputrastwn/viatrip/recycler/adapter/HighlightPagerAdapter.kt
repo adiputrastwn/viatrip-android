@@ -3,17 +3,17 @@ package com.adiputrastwn.viatrip.recycler.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.adiputrastwn.viatrip.databinding.RecyclerViewItemHighlightBinding
+import com.adiputrastwn.viatrip.databinding.ViewPagerHighlightBinding
 
-class RecyclerHighlightAdapter :
-    RecyclerView.Adapter<RecyclerHighlightAdapter.HighlightViewHolder>() {
+class HighlightPagerAdapter :
+    RecyclerView.Adapter<HighlightPagerAdapter.HighlightViewHolder>() {
 
 
-    inner class HighlightViewHolder(binding: RecyclerViewItemHighlightBinding) :
+    inner class HighlightViewHolder(binding: ViewPagerHighlightBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HighlightViewHolder {
-        val binding = RecyclerViewItemHighlightBinding.inflate(
+        val binding = ViewPagerHighlightBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false

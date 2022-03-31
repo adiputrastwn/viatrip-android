@@ -5,11 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.adiputrastwn.viatrip.databinding.FragmentHomeBinding
-import com.adiputrastwn.viatrip.recycler.adapter.RecyclerHighlightAdapter
-import com.adiputrastwn.viatrip.recycler.decoration.SpaceItemDecoration
+import com.adiputrastwn.viatrip.recycler.adapter.HighlightPagerAdapter
 
 class HomeFragment : Fragment() {
 
@@ -28,18 +25,8 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            recyclerHighlight.apply {
-                layoutManager =
-                    LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-                addItemDecoration(
-                    SpaceItemDecoration(
-                        context,
-                        16f,
-                        SpaceItemDecoration.Orientation.HORIZONTAL
-                    )
-                )
-                adapter = RecyclerHighlightAdapter()
-
+            viewPagerHighlight.apply {
+                adapter = HighlightPagerAdapter()
             }
         }
     }
