@@ -21,4 +21,11 @@ class HomeFragmentTests {
         onView(withId(R.id.view_pager_highlight)).check(matches(isDisplayed()))
     }
 
+    @Test
+    fun categories_recyclerView_visible() {
+        onView(withId(R.id.recycler_view_categories)).check(matches(isDisplayed()))
+    }
+
+
+
 }

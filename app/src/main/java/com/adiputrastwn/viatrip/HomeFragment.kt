@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
+import androidx.recyclerview.widget.GridLayoutManager
 import com.adiputrastwn.viatrip.databinding.FragmentHomeBinding
+import com.adiputrastwn.viatrip.recycler.adapter.CategoryRecyclerAdapter
 import com.adiputrastwn.viatrip.recycler.adapter.HighlightPagerAdapter
 
 class HomeFragment : Fragment() {
@@ -27,6 +30,11 @@ class HomeFragment : Fragment() {
         with(binding) {
             viewPagerHighlight.apply {
                 adapter = HighlightPagerAdapter()
+            }
+            recyclerViewCategories.apply {
+                layoutManager =
+                    GridLayoutManager(requireContext(), 2, GridLayoutManager.HORIZONTAL, false)
+                adapter = CategoryRecyclerAdapter()
             }
         }
     }
