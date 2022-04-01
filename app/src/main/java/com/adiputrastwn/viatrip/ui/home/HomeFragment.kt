@@ -1,11 +1,10 @@
-package com.adiputrastwn.viatrip
+package com.adiputrastwn.viatrip.ui.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import com.adiputrastwn.viatrip.databinding.FragmentHomeBinding
 import com.adiputrastwn.viatrip.recycler.adapter.CategoryRecyclerAdapter

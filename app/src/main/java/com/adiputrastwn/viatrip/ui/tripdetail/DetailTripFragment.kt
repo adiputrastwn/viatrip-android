@@ -1,4 +1,4 @@
-package com.adiputrastwn.viatrip
+package com.adiputrastwn.viatrip.ui.tripdetail
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

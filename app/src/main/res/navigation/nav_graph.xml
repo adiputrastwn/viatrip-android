@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/HomeFragment"
-        android:name="com.adiputrastwn.viatrip.HomeFragment"
+        android:name="com.adiputrastwn.viatrip.ui.home.HomeFragment"
         android:label="@string/home_fragment_label"
         tools:layout="@layout/fragment_home">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/DetailTripFragment"
-        android:name="com.adiputrastwn.viatrip.DetailTripFragment"
+        android:name="com.adiputrastwn.viatrip.ui.tripdetail.DetailTripFragment"
         android:label="@string/detail_trip_fragment_label"
         tools:layout="@layout/fragment_detail_trip">
 
