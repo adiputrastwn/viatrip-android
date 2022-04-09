@@ -5,12 +5,29 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.adiputrastwn.viatrip.databinding.ViewPagerHighlightBinding
 import com.adiputrastwn.viatrip.models.Highlight
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
+import com.bumptech.glide.request.transition.DrawableCrossFadeFactory
 
 class HighlightPagerAdapter :
     RecyclerView.Adapter<HighlightPagerAdapter.HighlightViewHolder>() {
 
-    inner class HighlightViewHolder(binding: ViewPagerHighlightBinding) :
-        RecyclerView.ViewHolder(binding.root)
+    val factory: DrawableCrossFadeFactory =
+        DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()
+
+    inner class HighlightViewHolder(private val binding: ViewPagerHighlightBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind() {
+            binding.imageBackground.apply {
+                Glide
+                    .with(itemView.context)
+                    .load("https://www.travelercantik.com/wp-content/uploads/2019/04/pantai-hotel-Kila-Senggigi.jpg")
+                    .transition(withCrossFade(factory))
+                    .centerCrop()
+                    .into(this)
+            }
+        }
+    }
 
     private var highlights: MutableList<Highlight> = mutableListOf()
 
@@ -24,7 +41,7 @@ class HighlightPagerAdapter :
     }
 
     override fun onBindViewHolder(holder: HighlightViewHolder, position: Int) {
-
+        holder.bind()
     }
 
     fun setHighlights(highlights: List<Highlight>) {
