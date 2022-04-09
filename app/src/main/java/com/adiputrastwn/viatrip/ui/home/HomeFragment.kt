@@ -9,15 +9,20 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.adiputrastwn.viatrip.databinding.FragmentHomeBinding
+import com.adiputrastwn.viatrip.models.Highlight
 import com.adiputrastwn.viatrip.recycler.adapter.CategoryRecyclerAdapter
 import com.adiputrastwn.viatrip.recycler.adapter.HighlightPagerAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val viewModel: HomeViewModel by viewModels()
+
+    private var highlightPagerAdapter = HighlightPagerAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +37,7 @@ class HomeFragment : Fragment() {
 
         with(binding) {
             viewPagerHighlight.apply {
-                adapter = HighlightPagerAdapter()
+                adapter = highlightPagerAdapter
             }
             recyclerViewCategories.apply {
                 layoutManager =
@@ -47,7 +52,7 @@ class HomeFragment : Fragment() {
                     uiState is HomeViewModel.HomeUiState.Loading
                 when (uiState) {
                     is HomeViewModel.HomeUiState.HighlightList -> {
-
+                        setHighlights(uiState.highlights)
                     }
                     is HomeViewModel.HomeUiState.Error -> {
 
@@ -58,6 +63,10 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun setHighlights(highlights: List<Highlight>) {
+        highlightPagerAdapter.setHighlights(highlights)
     }
 
     override fun onDestroyView() {
