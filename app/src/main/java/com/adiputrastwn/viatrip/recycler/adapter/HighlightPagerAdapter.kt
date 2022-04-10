@@ -17,14 +17,16 @@ class HighlightPagerAdapter :
 
     inner class HighlightViewHolder(private val binding: ViewPagerHighlightBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind() {
-            binding.imageBackground.apply {
+        fun bind(highlight: Highlight) {
+            binding.apply {
+                textLocation.text = highlight.location
+                textLocationDetail.text = highlight.locationDetail
                 Glide
                     .with(itemView.context)
-                    .load("https://www.travelercantik.com/wp-content/uploads/2019/04/pantai-hotel-Kila-Senggigi.jpg")
+                    .load(highlight.urlThumbnail)
                     .transition(withCrossFade(factory))
                     .centerCrop()
-                    .into(this)
+                    .into(imageBackground)
             }
         }
     }
@@ -41,7 +43,7 @@ class HighlightPagerAdapter :
     }
 
     override fun onBindViewHolder(holder: HighlightViewHolder, position: Int) {
-        holder.bind()
+        holder.bind(highlights[position])
     }
 
     fun setHighlights(highlights: List<Highlight>) {

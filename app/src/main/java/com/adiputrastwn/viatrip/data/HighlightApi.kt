@@ -11,10 +11,6 @@ interface ViaTripApi {
 
 class ViaTripApiImpl : ViaTripApi {
     override suspend fun fetchLatestHighlight(): List<Highlight> {
-        return listOf(
-            Highlight(UUID.randomUUID().toString()),
-            Highlight(UUID.randomUUID().toString()),
-            Highlight(UUID.randomUUID().toString())
-        )
+        return listOf()
     }
 }
